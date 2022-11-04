@@ -50,7 +50,7 @@ jobs:
         run: sudo docker pull ${{ secrets.DOCKER_USERNAME }}/nodejs-ec2-ci-cd:latest
 
       - name: Tagging new docker image as my-nodejs-app
-        run: sudo docker tag ${{ secrets.DOCKER_USERNAME }}/nodejs-ec2-ci-cd:latest my-nodejs-app
+        run: sudo docker tag ${{ secrets.DOCKER_USERNAME }}/nodejs-ec2-ci-cd:latest my-nodejs-app:latest
 
       - name: Run the Docker image with compose
         run: sudo docker compose up -d
