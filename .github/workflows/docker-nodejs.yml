@@ -46,8 +46,11 @@ jobs:
       - name: Pull the Docker image
         run: sudo docker pull ${{ secrets.DOCKER_USERNAME }}/nodejs-ec2-ci-cd:latest
 
-      - name: Run the Docker image
-        run: sudo docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/nodejs-ec2-ci-cd:latest
+      - name: Tagging new docker image as my-app
+        run: sudo docker tag ${{ secrets.DOCKER_USERNAME }}/nodejs-ec2-ci-cd:latest my-app
+
+      - name: Run the Docker image with compose
+        run: sudo docker compose up -d
 
       - name: Check the Docker image
         run: sudo docker ps
